@@ -1,0 +1,2 @@
+- [Django MySQL notes](https://docs.djangoproject.com/en/1.10/ref/databases/#mysql-notes)
+- [Django Oracle notes](https://docs.djangoproject.com/en/1.10/ref/databases/#oracle-notes)
