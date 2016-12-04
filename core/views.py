@@ -4,11 +4,17 @@ from django.views.generic import TemplateView
 from django.views.generic import UpdateView
 
 from core.forms import CreateStudentForm, UpdateStudentForm, CreateTeacherForm, UpdateTeacherForm
-from core.models import Teacher, Student, User
+from core.models import Teacher, Student, User, Group
+from marks.forms import CreateStudentMarkForm
+from marks.models import StudentMark
 
 
 class MainPageTemplateView(TemplateView):
     template_name = 'core/main_page.html'
+
+
+class GroupListView(ListView):
+    model = Group
 
 
 class UserListView(ListView):
@@ -33,6 +39,17 @@ class TeacherUpdateView(UpdateView):
 
 class StudentListView(ListView):
     model = Student
+
+    def get_queryset(self):
+        group_number = self.kwargs.get('group')
+        qs = super(StudentListView, self).get_queryset()
+        return qs.filter(user_group_full_name__id=group_number)
+
+    def get_context_data(self, **kwargs):
+        data = super(StudentListView, self).get_context_data()
+        form = CreateStudentMarkForm()
+        data.update({'form': form})
+        return data
 
 
 class StudentCreateView(CreateView):

@@ -8,9 +8,9 @@ from grading_system import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^mark/', include('marks.urls', 'marls')),
+    url(r'^mark/', include('marks.urls', 'marks')),
     url(r'^core/', include('core.urls', 'core')),
-    url(r'^$', MainPageTemplateView.as_view()),
+    url(r'^$', MainPageTemplateView.as_view(), name='home'),
 
 ]
 

@@ -7,103 +7,63 @@
 {% block content %}
 
     <div class="row">
-                <div class="col-sm-4 col-sm-offset-4 ">
-                    <p class="bg-warning alert__top">
-                        Выберите студента, которого хотите оценить
-                    </p>
-                </div>
-            </div>
+        <div class="col-sm-4 col-sm-offset-4 ">
+            <p class="bg-warning alert__top">
+                Выберите студента, которого хотите оценить
+            </p>
+        </div>
+    </div>
     <div class="row">
-                <div class="col-sm-12 body__right">
-                    <div class="row">
-                        {% for student in student_list %}
-                            <div class="col-xs-6 ">
-                            <div class="blocks">
-                                <div>
-                                    <div class="show__marks">
-                                        <a href="#">
-                                            {{ student.first_name }} {{ student.last_name }}
-                                        </a>
-                                    </div>
-                                    <div class="marks__all">
-                                        <div class="marks">
-                                            <div>
-                                                Работа в команде
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
-                                        </div>
-                                        <div class="marks">
-                                            <div>
-                                                Взаимовыручка
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
-                                        </div>
-                                        <div class="marks">
-                                            <div>
-                                                Общительность
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
-                                        </div>
-                                        <div class="marks">
-                                            <div>
-                                                Отношение к учебе
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
-                                        </div>
-                                        <div class="submit">
-                                            <a href="students_rating_chart.html" class="js__mark_submit btn btn-primary btn-sm">
-                                                Оценить
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="col-sm-12 body__right">
+            <div class="row">
+                {% for student in student_list %}
+                    <div class="col-xs-6 ">
+                    <div class="blocks">
+                        <div>
+                            <div class="show__marks">
+                                <a href="#">
+                                    {{ student }}
+                                </a>
                             </div>
-                        </div>
-                        {% endfor %}
-
-                        <div class="col-xs-6">
-                            <div class="blocks">
-                                <div>
-                                    <div class="show__marks">
-                                        <a href="#">
-                                            Галахова Наталья
-                                        </a>
+                            <div class="marks__all">
+                                <form action="{% url "marks:add_student_mark" %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="marks">
+                                        <div>
+                                            Работа в команде
+                                        </div>
+                                        {{ form.teamwork_points }}
                                     </div>
-                                    <div class="marks__all">
-                                        <div class="marks">
-                                            <div>
-                                                Работа в команде
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
+                                    <div class="marks">
+                                        <div>
+                                            Взаимовыручка
                                         </div>
-                                        <div class="marks">
-                                            <div>
-                                                Взаимовыручка
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
-                                        </div>
-                                        <div class="marks">
-                                            <div>
-                                                Общительность
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
-                                        </div>
-                                        <div class="marks">
-                                            <div>
-                                                Отношение к учебе
-                                            </div>
-                                            <input type="number" class="" placeholder="1 - 10">
-                                        </div>
-                                        <div class="submit">
-                                            <a href="students_rating_chart.html" class="js__mark_submit btn btn-primary btn-sm">
-                                                Оценить
-                                            </a>
-                                        </div>
+                                        {{ form.mutual_points }}
                                     </div>
-                                </div>
+                                    <div class="marks">
+                                        <div>
+                                            Общительность
+                                        </div>
+                                        {{ form.speak_points }}
+                                    </div>
+                                    <div class="marks">
+                                        <div>
+                                            Отношение к учебе
+                                        </div>
+                                        {{ form.learning_attitudes_points }}
+                                    </div>
+                                    <div class="submit">
+                                        <button type="submit"
+                                                class="js__mark_submit btn btn-primary btn-sm">
+                                            Оценить
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                {% endfor %}
                 </div>
             </div>
+        </div>
 {% endblock %}

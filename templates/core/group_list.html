@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 ">
+            <p class="bg-warning alert__top">
+                Выберите группу
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 body__right">
+            <div class="row">
+                {% for group in group_list %}
+                    <div class="col-xs-6 ">
+                        <div class="blocks">
+                            <a href="{% url "core:all_students" group=group.id %}">
+                                {{ group }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

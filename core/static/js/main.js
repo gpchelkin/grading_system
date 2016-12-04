@@ -12,17 +12,17 @@ $(".blocks").on("click", function () {
 
 //$('.dropdown-toggle').dropdown();
 
-$('.js__mark_submit').click(function (e){
-    e.preventDefault();
-    var newThis = $(this);
-    swal({
-        title: "Оценка поставлена",
-        text: "Оценка успешно поставлена",
-        type: "success",
-    }, function () {
-        window.location = newThis.attr('href');
-    });
-});
+// $('.js__mark_submit').click(function (e){
+//     e.preventDefault();
+//     var newThis = $(this);
+//     swal({
+//         title: "Оценка поставлена",
+//         text: "Оценка успешно поставлена",
+//         type: "success",
+//     }, function () {
+//         window.location = newThis.attr('href');
+    // });
+// });
 
 //$( "#marks__form" ).validate({
 //  rules: {
@@ -66,6 +66,6 @@ $('.js__mark_submit').click(function (e){
 //    });
 
 $('.marks__form').submit(function(){
-  location.href = 'teachers_rating_chart.html';
+  // location.href = 'teachers_rating_chart.html';
     return false;
 });
