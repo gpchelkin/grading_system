@@ -1,0 +1,32 @@
+.autorization{
+    margin-top: 10%;
+    text-align: center;
+}
+
+.autorization__head{
+    background-color: #438EB9;
+    color: white;
+    height: 40px;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.autorization__body{
+    height: 150px;
+    background-color: #F5F5F5;
+    border: 1px solid #E5E5E5;
+    text-align: center;
+    padding-right: 0;
+}
+
+.autorization__login{
+    margin-top: 15px;
+}
+
+.autorization__pass{
+    margin-top: 15px;
+}
+
+.autorization__button{
+    margin-top: 15px;
+}

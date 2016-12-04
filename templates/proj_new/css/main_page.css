@@ -1,0 +1,108 @@
+.header{
+    background-color: #438EB9;
+    color: white;
+    height: 40px;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.header__button{
+    color: white;
+}
+
+.header__buttons_center{
+    text-align: center;
+}
+
+.body__left{
+    height: 100vh;
+    background-color: #F5F5F5;
+    border-right: 1px solid #E5E5E5;
+    text-align: center;
+    padding-right: 0;
+}
+
+.body__right{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.body__left_avatar{
+    margin: 20px 0;
+}
+
+.body__left_name{
+    margin-top: 15px;
+    border-bottom: 1px solid #E5E5E5;
+    border-top: 1px solid #E5E5E5;
+    padding: 5px 0;
+}
+
+.body__left_who{
+    padding: 5px 0;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.blocks{
+    cursor: pointer;
+    min-height: 40px;
+    padding-top: 10px;
+    background: #ECF2F7;
+    text-align: center;
+    margin: 10px 10px;
+}
+
+.marks__all{
+    margin-top: 20px;
+    background-color: #F5F5F5;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: none;
+}
+.marks{
+    margin-top: 5px;
+}
+
+.submit{
+    margin-top: 5px;
+}
+
+.alert__top{
+    margin-top: 15px;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.who{
+    color: black;
+    padding: 0 20px;
+}
+
+.dropdown-toggle{
+    color: white;
+}
+
+.show__marks{
+    cursor:pointer;
+}
+
+.button_go_back{
+    margin-top: 5px;
+    width: 100%;
+}
+
+/* chart styles */
+
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: 2px; }
+.bullet .range.s0 { fill: #eee; }
+.bullet .range.s1 { fill: #ddd; }
+.bullet .range.s2 { fill: #ccc; }
+.bullet .measure.s2 { fill: #dad01a; }
+.bullet .measure.s1 { fill: steelblue; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #999; }
+
