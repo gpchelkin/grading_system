@@ -35,30 +35,18 @@ class User(AbstractUser):
 
 
 class Student(models.Model):
-    semester = models.CharField(verbose_name='Семестр обучения', choices=SEMESTER_CHOICES, default='1', max_length=5)
-    year_start = models.IntegerField(verbose_name='Год поступления', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
-    year_end = models.IntegerField(verbose_name='Год окончания', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
-    course = models.CharField(verbose_name='Курс', choices=COURSE_CHOICE, default='1', max_length=5)
+    semester = models.CharField(verbose_name=u'Семестр обучения', choices=SEMESTER_CHOICES, default='1', max_length=5)
+    year_start = models.IntegerField(verbose_name=u'Год поступления', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
+    year_end = models.IntegerField(verbose_name=u'Год окончания', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
+    course = models.CharField(verbose_name=u'Курс', choices=COURSE_CHOICE, default='1', max_length=5)
     user_connection = models.OneToOneField(User)
-
-    class Meta:
-        verbose_name = 'студент'
-        verbose_name_plural = 'студенты'
 
 
 class Teacher(models.Model):
     user_connection = models.OneToOneField(User)
 
-    class Meta:
-        verbose_name = 'преподаватель'
-        verbose_name_plural = 'преподаватели'
-
 
 class Subject(models.Model):
-    name = models.CharField(verbose_name='Предмет', max_length=50)
-    semester = models.CharField(verbose_name='Семестр обучения', choices=SEMESTER_CHOICES, default='1', max_length=5)
-    course = models.CharField(verbose_name='Курс', choices=COURSE_CHOICE, default='1', max_length=5)
-
-    class Meta:
-        verbose_name = 'предмет'
-        verbose_name_plural = 'предметы'
+    name = models.CharField(verbose_name=u'Предмет', max_length=50)
+    semester = models.CharField(verbose_name=u'Семестр обучения', choices=SEMESTER_CHOICES, default='1', max_length=5)
+    course = models.CharField(verbose_name=u'Курс', choices=COURSE_CHOICE, default='1', max_length=5)
