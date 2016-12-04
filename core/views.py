@@ -1,9 +1,14 @@
 from django.views.generic import CreateView
 from django.views.generic import ListView
+from django.views.generic import TemplateView
 from django.views.generic import UpdateView
 
 from core.forms import CreateStudentForm, UpdateStudentForm, CreateTeacherForm, UpdateTeacherForm
 from core.models import Teacher, Student, User
+
+
+class MainPageTemplateView(TemplateView):
+    template_name = 'core/main_page.html'
 
 
 class UserListView(ListView):
