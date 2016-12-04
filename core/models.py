@@ -34,12 +34,21 @@ class User(AbstractUser):
     pass
 
 
+class Group(models.Model):
+    name = models.CharField(verbose_name=u'Группа', max_length=10)
+
+    def __unicode__(self):
+        return u'{}'.format(self.name)
+
+
 class Student(models.Model):
-    semester = models.CharField(verbose_name=u'Семестр обучения', choices=SEMESTER_CHOICES, default='1', max_length=5)
     year_start = models.IntegerField(verbose_name=u'Год поступления', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
     year_end = models.IntegerField(verbose_name=u'Год окончания', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
-    course = models.CharField(verbose_name=u'Курс', choices=COURSE_CHOICE, default='1', max_length=5)
+    user_group_full_name = models.OneToOneField(Group)
     user_connection = models.OneToOneField(User)
+
+    def __unicode__(self):
+        return u'{} {}'.format(self.user_connection.first_name, self.user_connection.last_name)
 
 
 class Teacher(models.Model):
