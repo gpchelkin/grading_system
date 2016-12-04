@@ -9,6 +9,14 @@ class CreateTeacherMarkForm(forms.ModelForm):
         model = TeacherMark
         exclude = ['date', 'mark']
         fields = '__all__'
+        widgets = {
+            'speaker_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'professionalism_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'exactingness_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'understanding_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'charisma_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'collective_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+        }
 
 
 class UpdateTeacherMarkForm(forms.ModelForm):

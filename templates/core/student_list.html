@@ -31,25 +31,25 @@
                                     <input type="hidden" name="student_id" value="{{ student.id }}">
                                     <div class="marks">
                                         <div>
-                                            Работа в команде
+                                            {{ form.teamwork_points.label }}
                                         </div>
                                         {{ form.teamwork_points }}
                                     </div>
                                     <div class="marks">
                                         <div>
-                                            Взаимовыручка
+                                            {{ form.mutual_points.label }}
                                         </div>
                                         {{ form.mutual_points }}
                                     </div>
                                     <div class="marks">
                                         <div>
-                                            Общительность
+                                            {{ form.speak_points.label }}
                                         </div>
                                         {{ form.speak_points }}
                                     </div>
                                     <div class="marks">
                                         <div>
-                                            Отношение к учебе
+                                            {{ form.learning_attitudes_points.label }}
                                         </div>
                                         {{ form.learning_attitudes_points }}
                                     </div>

@@ -20,6 +20,12 @@ class TeacherMark(Mark):
     collective_points = models.IntegerField(verbose_name=u'Атмосфера коллектива', validators=[MaxValueValidator(10), MinValueValidator(1)])
     mark = models.ForeignKey(Teacher)
 
+    def __unicode__(self):
+        return u'Преподаватель: {} Оценки: {}-{}-{}-{}-{}-{}'.format(
+            self.mark, self.speaker_points, self.professionalism_points, self.exactingness_points,
+            self.understanding_points, self.charisma_points, self.collective_points
+        )
+
 
 class StudentMark(Mark):
     teamwork_points = models.IntegerField(verbose_name=u'Работа в команде', validators=[MaxValueValidator(10), MinValueValidator(1)])

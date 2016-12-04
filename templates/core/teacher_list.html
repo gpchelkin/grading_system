@@ -5,8 +5,75 @@
 {% endblock %}
 
 {% block content %}
-    {% for teacher in teacher_list %}
-        {{ teacher }}
-    {% endfor %}
-    all
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 ">
+            <p class="bg-warning alert__top">
+                Выберите преподователя, которого хотите оценить
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 body__right">
+            <div class="row">
+                {% for teacher in teacher_list %}
+                    <div class="col-xs-6 ">
+                        <div class="blocks">
+                            <div>
+                                <div class="show__marks">
+                                    <a href="#">
+                                        {{ teacher }}
+                                    </a>
+                                </div>
+                                <form class="js_form_submit" method="post" action="{% url "marks:add_teachers_mark" %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="teacher_id" value="{{ teacher.id }}">
+                                    <div class="marks__all">
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.speaker_points.label }}
+                                            </div>
+                                            {{ form.speaker_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.professionalism_points.label }}
+                                            </div>
+                                            {{ form.professionalism_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.exactingness_points.label }}
+                                            </div>
+                                            {{ form.exactingness_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.understanding_points.label }}
+                                            </div>
+                                            {{ form.understanding_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.charisma_points.label }}
+                                            </div>
+                                            {{ form.charisma_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.collective_points.label }}
+                                            </div>
+                                            {{ form.collective_points }}
+                                        </div>
+                                        <div class="submit">
+                                            <input type="submit" value="Оценить" class="btn btn-primary btn-sm">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

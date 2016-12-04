@@ -54,6 +54,9 @@ class Student(models.Model):
 class Teacher(models.Model):
     user_connection = models.OneToOneField(User)
 
+    def __unicode__(self):
+        return u'{} {}'.format(self.user_connection.first_name, self.user_connection.last_name)
+
 
 class Subject(models.Model):
     name = models.CharField(verbose_name=u'Предмет', max_length=50)
