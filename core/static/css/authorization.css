@@ -3,7 +3,7 @@
     text-align: center;
 }
 
-.autorization__head{
+.authorization__head {
     background-color: #438EB9;
     color: white;
     height: 40px;
@@ -11,7 +11,7 @@
     font-size: 14px;
 }
 
-.autorization__body{
+.authorization__body {
     height: 150px;
     background-color: #F5F5F5;
     border: 1px solid #E5E5E5;
@@ -19,14 +19,14 @@
     padding-right: 0;
 }
 
-.autorization__login{
+.authorization__login {
     margin-top: 15px;
 }
 
-.autorization__pass{
+.authorization__pass {
     margin-top: 15px;
 }
 
-.autorization__button{
+.authorization__button {
     margin-top: 15px;
 }

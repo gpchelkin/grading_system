@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^mark/', include('marks.urls', 'marks')),
     url(r'^core/', include('core.urls', 'core')),
+    url('^', include('django.contrib.auth.urls')),
+
     url(r'^$', MainPageTemplateView.as_view(), name='home'),
 
 ]
