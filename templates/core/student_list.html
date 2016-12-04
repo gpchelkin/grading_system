@@ -26,8 +26,9 @@
                                 </a>
                             </div>
                             <div class="marks__all">
-                                <form action="{% url "marks:add_student_mark" %}" method="post">
+                                <form class="js_form_submit" action="{% url "marks:add_student_mark" %}" method="post">
                                     {% csrf_token %}
+                                    <input type="hidden" name="student_id" value="{{ student.id }}">
                                     <div class="marks">
                                         <div>
                                             Работа в команде

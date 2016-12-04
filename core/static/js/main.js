@@ -1,7 +1,3 @@
-/**
- * Created by danilakimov on 18.11.16.
- */
-
 $(".show__marks").on("click", function () {
     $(this).parent().find(".marks__all").toggle();
 });
@@ -12,17 +8,17 @@ $(".blocks").on("click", function () {
 
 //$('.dropdown-toggle').dropdown();
 
-// $('.js__mark_submit').click(function (e){
-//     e.preventDefault();
-//     var newThis = $(this);
-//     swal({
-//         title: "Оценка поставлена",
-//         text: "Оценка успешно поставлена",
-//         type: "success",
-//     }, function () {
-//         window.location = newThis.attr('href');
-    // });
-// });
+$('.js_form_submit').on('submit', function (e){
+    e.preventDefault();
+    var newThis = $(this);
+    swal({
+        title: "Оценка поставлена",
+        text: "Оценка успешно поставлена",
+        type: "success"
+    }, function () {
+      newThis[0].submit()
+    });
+});
 
 //$( "#marks__form" ).validate({
 //  rules: {

@@ -28,6 +28,9 @@ class StudentMark(Mark):
     learning_attitudes_points = models.IntegerField(verbose_name=u'Отношение к учебе', validators=[MaxValueValidator(10), MinValueValidator(1)])
     mark = models.ForeignKey(Student)
 
+    def __unicode__(self):
+        return u'Студент: {} Оценки: {}-{}-{}-{}'.format(self.mark, self.teamwork_points, self.mutual_points, self.speak_points, self. learning_attitudes_points)
+
 
 class SubjectMark(Mark):
     relevance_points = models.IntegerField(verbose_name=u'Актуальность', validators=[MaxValueValidator(10), MinValueValidator(1)])

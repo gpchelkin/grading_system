@@ -14,13 +14,13 @@ class TeacherMarkListView(ListView):
     model = TeacherMark
 
 
-class TeacherMarkCreateView(CreateView, TeacherAccessMixin):
+class TeacherMarkCreateView(CreateView):
     model = TeacherMark
     template_name_suffix = "_create_form"
     form_class = CreateTeacherMarkForm
 
 
-class TeacherMarkUpdateView(UpdateView, TeacherAccessMixin):
+class TeacherMarkUpdateView(UpdateView):
     model = TeacherMark
     template_name_suffix = "_update_form"
     form_class = UpdateTeacherMarkForm
@@ -30,18 +30,22 @@ class StudentMarkListView(ListView):
     model = StudentMark
 
 
-class StudentMarkCreateView(CreateView, StudentAccessMixin):
+class StudentMarkCreateView(CreateView):
     model = StudentMark
     template_name_suffix = "_create_form"
     success_url = reverse_lazy("home")
     form_class = CreateStudentMarkForm
 
     def form_valid(self, form):
-        form.instance.mark = self.student
-        return super(StudentMarkCreateView, self).form_valid(form)
+        student_id = self.request.POST.get('student_id', None)
+        if student_id:
+            form.instance.mark = Student.objects.filter(id=student_id).first()
+            return super(StudentMarkCreateView, self).form_valid(form)
+        else:
+            return self.form_valid(form)
 
 
-class StudentMarkUpdateView(UpdateView, StudentAccessMixin):
+class StudentMarkUpdateView(UpdateView):
     model = StudentMark
     template_name_suffix = "_update_form"
     form_class = UpdateStudentMarkForm

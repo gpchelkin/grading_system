@@ -6,7 +6,6 @@ from django.views.generic import UpdateView
 from core.forms import CreateStudentForm, UpdateStudentForm, CreateTeacherForm, UpdateTeacherForm
 from core.models import Teacher, Student, User, Group
 from marks.forms import CreateStudentMarkForm
-from marks.models import StudentMark
 
 
 class MainPageTemplateView(TemplateView):
