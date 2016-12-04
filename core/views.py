@@ -11,30 +11,26 @@ class UserListView(ListView):
 
 class TeacherListView(ListView):
     model = Teacher
-    pass
 
 
 class TeacherCreateView(CreateView):
     model = Teacher
-    pass
 
 
 class TeacherUpdateView(UpdateView):
     model = Teacher
-    pass
 
 
 class StudentListView(ListView):
     model = Student
-    pass
 
 
 class StudentCreateView(CreateView):
     model = Student
-    pass
 
 
 class StudentUpdateView(UpdateView):
     model = Student
     pass
+
 
