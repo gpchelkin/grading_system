@@ -31,7 +31,8 @@ COURSE_CHOICE = (
 
 
 class User(AbstractUser):
-    pass
+    is_student = models.BooleanField("Этот пользователь студент", default=False)
+    is_teacher = models.BooleanField("Этот пользователь учитель", default=False)
 
 
 class Group(models.Model):
