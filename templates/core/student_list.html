@@ -18,53 +18,54 @@
             <div class="row">
                 {% for student in student_list %}
                     <div class="col-xs-6 ">
-                    <div class="blocks">
-                        <div>
-                            <div class="show__marks">
-                                <a href="#">
-                                    {{ student }}
-                                </a>
-                            </div>
-                            <div class="marks__all">
-                                <form class="js_form_submit" action="{% url "marks:add_student_mark" %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="student_id" value="{{ student.id }}">
-                                    <div class="marks">
-                                        <div>
-                                            {{ form.teamwork_points.label }}
+                        <div class="blocks">
+                            <div>
+                                <div class="show__marks">
+                                    <a href="#">
+                                        {{ student }}
+                                    </a>
+                                </div>
+                                <div class="marks__all">
+                                    <form class="js_form_submit" action="{% url "marks:add_student_mark" %}"
+                                          method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="student_id" value="{{ student.id }}">
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.teamwork_points.label }}
+                                            </div>
+                                            {{ form.teamwork_points }}
                                         </div>
-                                        {{ form.teamwork_points }}
-                                    </div>
-                                    <div class="marks">
-                                        <div>
-                                            {{ form.mutual_points.label }}
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.mutual_points.label }}
+                                            </div>
+                                            {{ form.mutual_points }}
                                         </div>
-                                        {{ form.mutual_points }}
-                                    </div>
-                                    <div class="marks">
-                                        <div>
-                                            {{ form.speak_points.label }}
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.speak_points.label }}
+                                            </div>
+                                            {{ form.speak_points }}
                                         </div>
-                                        {{ form.speak_points }}
-                                    </div>
-                                    <div class="marks">
-                                        <div>
-                                            {{ form.learning_attitudes_points.label }}
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.learning_attitudes_points.label }}
+                                            </div>
+                                            {{ form.learning_attitudes_points }}
                                         </div>
-                                        {{ form.learning_attitudes_points }}
-                                    </div>
-                                    <div class="submit">
-                                        <button type="submit"
-                                                class="js__mark_submit btn btn-primary btn-sm">
-                                            Оценить
-                                        </button>
-                                    </div>
-                                </form>
+                                        <div class="submit">
+                                            <button type="submit"
+                                                    class="js__mark_submit btn btn-primary btn-sm">
+                                                Оценить
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-                </div>
             </div>
         </div>
 {% endblock %}

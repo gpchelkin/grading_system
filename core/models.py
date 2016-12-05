@@ -46,7 +46,7 @@ class Group(models.Model):
 class Student(models.Model):
     year_start = models.IntegerField(verbose_name=u'Год поступления', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
     year_end = models.IntegerField(verbose_name=u'Год окончания', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
-    user_group_full_name = models.OneToOneField(Group)
+    user_group_full_name = models.ForeignKey(Group)
     user_connection = models.OneToOneField(User)
 
     def __unicode__(self):
