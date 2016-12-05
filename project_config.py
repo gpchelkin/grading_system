@@ -1,11 +1,11 @@
-import ConfigParser
+from configparser import ConfigParser
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # CONFIG ---------------
 
-config = ConfigParser.ConfigParser()
+config = ConfigParser()
 
 DB_CONFIG_NAME = os.getenv("DB_CONFIG_NAME", "config.conf")
 
