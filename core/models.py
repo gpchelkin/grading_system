@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
+from curriculum.models import ClassesType
 
 SEMESTER_CHOICES = (
     ('1', '1'),
@@ -63,3 +64,7 @@ class Subject(models.Model):
     name = models.CharField(verbose_name=u'Предмет', max_length=50)
     semester = models.CharField(verbose_name=u'Семестр обучения', choices=SEMESTER_CHOICES, default='1', max_length=5)
     course = models.CharField(verbose_name=u'Курс', choices=COURSE_CHOICE, default='1', max_length=5)
+    subject_type = models.ForeignKey(verbose_name=u'Тип предмета', to=ClassesType)
+
+    def __unicode__(self):
+        return u'{} - {}{} - {}'.format(self.name, self.course, self.semester, self.subject_type)
