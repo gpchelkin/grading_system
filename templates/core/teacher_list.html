@@ -21,7 +21,7 @@
                             <div>
                                 <div class="show__marks">
                                     <a href="#">
-                                        {{ teacher }}
+                                        {{ teacher.user_connection.first_name }} {{ teacher.user_connection.last_name }}
                                     </a>
                                 </div>
                                 <form class="js_form_submit" method="post" action="{% url "marks:add_teachers_mark" %}">
