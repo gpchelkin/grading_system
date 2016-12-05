@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 ">
+            <p class="bg-warning alert__top">
+                Выберите предмет, который хотите оценить
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 body__right">
+            <div class="row">
+                {% for subject in subject_list %}
+                    <div class="col-xs-6">
+                        <div class="blocks">
+                            <div>
+                                <div class="show__marks">
+                                    <a href="#">
+                                        {{ subject.name }}
+                                    </a>
+                                </div>
+                                <div class="marks__all">
+                                    <form class="js_form_submit" action="{% url "marks:add_subject_mark" %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="subject_id" value="{{ subject.id }}">
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.relevance_points.label }}
+                                            </div>
+                                            {{ form.relevance_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.availability_points.label }}
+                                            </div>
+                                            {{ form.availability_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.thrill_points.label }}
+                                            </div>
+                                            {{ form.thrill_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.fixation_material_points.label }}
+                                            </div>
+                                            {{ form.fixation_material_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.learning_material_points.label }}
+                                            </div>
+                                            {{ form.learning_material_points }}
+                                        </div>
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.learning_organization_points.label }}
+                                            </div>
+                                            {{ form.learning_organization_points }}
+                                        </div>
+                                        <div class="submit">
+                                            <button type="submit" class="js__mark_submit btn btn-primary btn-sm">
+                                                Оценить
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

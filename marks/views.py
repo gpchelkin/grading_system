@@ -3,11 +3,12 @@ from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.views.generic import UpdateView
 
-from core.models import Student, Teacher
+from core.models import Student, Teacher, Subject
 from marks.forms import CreateTeacherMarkForm, UpdateTeacherMarkForm, CreateStudentMarkForm, UpdateStudentMarkForm, \
-    CreateSubjectMarkForm, UpdateSubjectMarkForm
+    CreateSubjectMarkForm, UpdateSubjectMarkForm, CreateNPDMarkForm
 from marks.mixins import StudentAccessMixin, TeacherAccessMixin
-from marks.models import TeacherMark, StudentMark, SubjectMark
+from marks.models import TeacherMark, StudentMark, SubjectMark, NPDMark
+from npd.models import NPD
 
 
 class TeacherMarkListView(ListView):
@@ -32,6 +33,7 @@ class TeacherMarkCreateView(CreateView):
 class TeacherMarkUpdateView(UpdateView):
     model = TeacherMark
     template_name_suffix = "_update_form"
+    success_url = reverse_lazy("home")
     form_class = UpdateTeacherMarkForm
 
 
@@ -57,6 +59,7 @@ class StudentMarkCreateView(CreateView):
 class StudentMarkUpdateView(UpdateView):
     model = StudentMark
     template_name_suffix = "_update_form"
+    success_url = reverse_lazy("home")
     form_class = UpdateStudentMarkForm
 
 
@@ -67,11 +70,47 @@ class SubjectMarkListView(ListView):
 class SubjectMarkCreateView(CreateView):
     model = SubjectMark
     template_name_suffix = "_create_form"
+    success_url = reverse_lazy("home")
     form_class = CreateSubjectMarkForm
+
+    def form_valid(self, form):
+        subject_id = self.request.POST.get('subject_id', None)
+        if subject_id:
+            form.instance.mark = Subject.objects.filter(id=subject_id).first()
+            return super(SubjectMarkCreateView, self).form_valid(form)
+        else:
+            raise ValueError('No subject_id')
 
 
 class SubjectMarkUpdateView(UpdateView):
     model = SubjectMark
     template_name_suffix = "_update_form"
+    success_url = reverse_lazy("home")
+    form_class = UpdateSubjectMarkForm
+
+
+class NPDMarkListView(ListView):
+    model = NPDMark
+
+
+class NPDMarkCreateView(CreateView):
+    model = NPDMark
+    template_name_suffix = "_create_form"
+    success_url = reverse_lazy("home")
+    form_class = CreateNPDMarkForm
+
+    def form_valid(self, form):
+        npd_id = self.request.POST.get('npd_id', None)
+        if npd_id:
+            form.instance.mark = NPD.objects.filter(id=npd_id).first()
+            return super(NPDMarkCreateView, self).form_valid(form)
+        else:
+            raise ValueError('No npd_id')
+
+
+class NPDMarkUpdateView(UpdateView):
+    model = NPDMark
+    template_name_suffix = "_update_form"
+    success_url = reverse_lazy("home")
     form_class = UpdateSubjectMarkForm
 

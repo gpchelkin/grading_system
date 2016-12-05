@@ -5,19 +5,12 @@ from django.views.generic import UpdateView
 
 from core.forms import CreateStudentForm, UpdateStudentForm, CreateTeacherForm, UpdateTeacherForm
 from core.models import Teacher, Student, User, Group
+from curriculum.models import ClassesType
 from marks.forms import CreateStudentMarkForm, CreateTeacherMarkForm
 
 
-class MainPageTemplateView(TemplateView):
-    template_name = 'core/main_page.html'
-
-
-class GroupListView(ListView):
-    model = Group
-
-
-class UserListView(ListView):
-    model = User
+class ClassesTypeListView(ListView):
+    model = ClassesType
 
 
 class TeacherListView(ListView):

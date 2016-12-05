@@ -1,7 +1,8 @@
 from django import forms
 from django.forms import TextInput
 
-from marks.models import StudentMark, TeacherMark, SubjectMark
+from marks.models import StudentMark, TeacherMark, SubjectMark, NPDMark
+from npd.models import NPD
 
 
 class CreateTeacherMarkForm(forms.ModelForm):
@@ -51,10 +52,35 @@ class CreateSubjectMarkForm(forms.ModelForm):
         model = SubjectMark
         exclude = ['date', 'mark']
         fields = '__all__'
+        widgets = {
+            'relevance_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'availability_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'thrill_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'fixation_material_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'learning_material_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+            'learning_organization_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
+        }
 
 
 class UpdateSubjectMarkForm(forms.ModelForm):
     class Meta:
         model = SubjectMark
+        exclude = ['date', 'mark']
+        fields = '__all__'
+
+
+class CreateNPDMarkForm(forms.ModelForm):
+    class Meta:
+        model = NPDMark
+        exclude = ['date', 'mark']
+        fields = '__all__'
+        widgets = {
+            'difficult_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'})
+        }
+
+
+class UpdateNPDMarkForm(forms.ModelForm):
+    class Meta:
+        model = NPDMark
         exclude = ['date', 'mark']
         fields = '__all__'

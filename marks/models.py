@@ -4,7 +4,8 @@ import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from core.models import Teacher, Student, Subject
+from core.models import Teacher, Student, Subject, User
+from npd.models import NPD
 
 
 class Mark(models.Model):
@@ -46,3 +47,17 @@ class SubjectMark(Mark):
     learning_material_points = models.IntegerField(verbose_name=u'Методические материалы', validators=[MaxValueValidator(10), MinValueValidator(1)])
     learning_organization_points = models.IntegerField(verbose_name=u'Организация занятий', validators=[MaxValueValidator(10), MinValueValidator(1)])
     mark = models.ForeignKey(Subject)
+
+    def __unicode__(self):
+        return u'Предмет: {} Оценки: {}-{}-{}-{}-{}-{} '.format(
+            self.mark.name, self.relevance_points, self.availability_points, self.thrill_points,
+            self.fixation_material_points, self.learning_material_points, self.learning_organization_points
+        )
+
+
+class NPDMark(Mark):
+    difficult_points = models.IntegerField(verbose_name=u'Уровень сложности', validators=[MaxValueValidator(10), MinValueValidator(1)])
+    mark = models.ForeignKey(verbose_name=u'НПД', to=NPD)
+
+    def __unicode__(self):
+        return u'НПД: {} Оценка: {}'.format(self.mark.name, self.difficult_points)

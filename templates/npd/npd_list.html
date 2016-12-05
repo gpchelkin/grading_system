@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 ">
+            <p class="bg-warning alert__top">
+                Выберите то, что хотите оценить
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 body__right">
+            <div class="row">
+                {% for npd in npd_list %}
+                    <div class="col-xs-6">
+                        <div class="blocks">
+                            <div>
+                                <div class="show__marks">
+                                    <a href="#">
+                                        {{ npd }}
+                                    </a>
+                                </div>
+                                <div class="marks__all">
+                                    <form class="js_form_submit" action="{% url "marks:add_npd_mark" %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="npd_id" value="{{ npd.id }}">
+                                        <div class="marks">
+                                            <div>
+                                                {{ form.difficult_points.label }}
+                                            </div>
+                                            {{ form.difficult_points }}
+                                        </div>
+                                        <div class="submit">
+                                            <button type="submit" class="js__mark_submit btn btn-primary btn-sm">
+                                                Оценить
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

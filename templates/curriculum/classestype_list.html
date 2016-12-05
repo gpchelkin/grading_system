@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 ">
+            <p class="bg-warning alert__top">
+                Выберите то, что хотите оценить
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 body__right">
+            <div class="row">
+                {% for classestype in classestype_list %}
+                    <div class="col-xs-6 ">
+                        <div class="blocks">
+                            <a href="{% url "core:all_subjects" type=classestype.id %}">
+                                {{ classestype }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
