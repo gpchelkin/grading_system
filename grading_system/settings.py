@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'core',
     'marks',
     'curriculum',
-    'npd'
+    'npd',
+    'reports'
 ]
 
 MIDDLEWARE = [
