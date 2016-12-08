@@ -27,7 +27,7 @@ SECRET_KEY = '$ifd2hbleiag2=p8hihd!h_z@$0#lz15g#twh*26btfq3o@lsj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'51.15.52.79', u'db.pchelk.in']
 
 
 # Application definition
