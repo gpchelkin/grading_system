@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Профиль
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 ">
+            <p class="bg-warning alert__top">
+                Выберите, что вы хотите посмотреть
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 body__right">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="blocks">
+                        <div>
+                            <div class="show__marks">
+                                <a href="{% url "profile_info:for_me" %}">
+                                    Оценки, которые поставлены мне
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-xs-6">
+                    <div class="blocks">
+                        <div>
+                            <div class="show__marks">
+                                <a href="{% url "profile_info:my" %}">
+                                    Оценки, которые поставлены мной
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

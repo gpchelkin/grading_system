@@ -1,6 +1,5 @@
 from django.views.generic import CreateView
 from django.views.generic import ListView
-from django.views.generic import TemplateView
 from django.views.generic import UpdateView
 
 from core.forms import CreateStudentForm, UpdateStudentForm, CreateTeacherForm, UpdateTeacherForm

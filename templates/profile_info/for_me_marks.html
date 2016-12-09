@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Оценки, поставленные мне
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12 body__right">
+            <div class="row">
+
+                {% for student_mark in student_marks %}
+                    <div class="col-xs-6">
+                        <div class="blocks">
+                            <div>
+                                <div class="show__marks">
+                                    <a href="#">
+                                        {{ student_marks }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for teacher_marks in teachers_marks %}
+                    <div class="col-xs-6">
+                        <div class="blocks">
+                            <div>
+                                <div class="show__marks">
+                                    <a href="#">
+                                        {{ subject_mark }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
