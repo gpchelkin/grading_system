@@ -4,11 +4,13 @@ from django.forms import TextInput
 from marks.models import StudentMark, TeacherMark, SubjectMark, NPDMark
 from npd.models import NPD
 
+EXCLUDE_FIELDS = ['who_rated', 'date', 'mark']
+
 
 class CreateTeacherMarkForm(forms.ModelForm):
     class Meta:
         model = TeacherMark
-        exclude = ['date', 'mark']
+        exclude = EXCLUDE_FIELDS
         fields = '__all__'
         widgets = {
             'speaker_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
@@ -23,14 +25,14 @@ class CreateTeacherMarkForm(forms.ModelForm):
 class UpdateTeacherMarkForm(forms.ModelForm):
     class Meta:
         model = TeacherMark
-        exclude = ['date', 'mark']
+        exclude = EXCLUDE_FIELDS
         fields = '__all__'
 
 
 class CreateStudentMarkForm(forms.ModelForm):
     class Meta:
         model = StudentMark
-        exclude = ['date', 'mark']
+        exclude = EXCLUDE_FIELDS
         fields = '__all__'
         widgets = {
             'teamwork_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
@@ -43,14 +45,14 @@ class CreateStudentMarkForm(forms.ModelForm):
 class UpdateStudentMarkForm(forms.ModelForm):
     class Meta:
         model = StudentMark
-        exclude = ['date', 'mark']
+        exclude = EXCLUDE_FIELDS
         fields = '__all__'
 
 
 class CreateSubjectMarkForm(forms.ModelForm):
     class Meta:
         model = SubjectMark
-        exclude = ['date', 'mark']
+        exclude = EXCLUDE_FIELDS
         fields = '__all__'
         widgets = {
             'relevance_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'}),
@@ -65,14 +67,14 @@ class CreateSubjectMarkForm(forms.ModelForm):
 class UpdateSubjectMarkForm(forms.ModelForm):
     class Meta:
         model = SubjectMark
-        exclude = ['date', 'mark']
+        exclude = EXCLUDE_FIELDS
         fields = '__all__'
 
 
 class CreateNPDMarkForm(forms.ModelForm):
     class Meta:
         model = NPDMark
-        exclude = ['date', 'mark']
+        exclude = EXCLUDE_FIELDS
         fields = '__all__'
         widgets = {
             'difficult_points': TextInput(attrs={'placeholder': '1-10', 'type': 'number'})

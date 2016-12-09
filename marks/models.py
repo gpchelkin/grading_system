@@ -10,6 +10,7 @@ from npd.models import NPD
 
 class Mark(models.Model):
     date = models.DateTimeField(verbose_name=u'Дата оценивания', default=datetime.date.today)
+    who_rated = models.ForeignKey(verbose_name=u'Кто оценил', to=User)
 
 
 class TeacherMark(Mark):

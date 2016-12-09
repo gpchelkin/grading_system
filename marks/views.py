@@ -25,6 +25,7 @@ class TeacherMarkCreateView(CreateView):
         teacher_id = self.request.POST.get('teacher_id', None)
         if teacher_id:
             form.instance.mark = Teacher.objects.filter(id=teacher_id).first()
+            form.instance.who_rated = self.request.user
             return super(TeacherMarkCreateView, self).form_valid(form)
         else:
             raise ValueError('No teacher_id')
@@ -51,6 +52,7 @@ class StudentMarkCreateView(CreateView):
         student_id = self.request.POST.get('student_id', None)
         if student_id:
             form.instance.mark = Student.objects.filter(id=student_id).first()
+            form.instance.who_rated = self.request.user
             return super(StudentMarkCreateView, self).form_valid(form)
         else:
             raise ValueError('No student_id')
@@ -77,6 +79,7 @@ class SubjectMarkCreateView(CreateView):
         subject_id = self.request.POST.get('subject_id', None)
         if subject_id:
             form.instance.mark = Subject.objects.filter(id=subject_id).first()
+            form.instance.who_rated = self.request.user
             return super(SubjectMarkCreateView, self).form_valid(form)
         else:
             raise ValueError('No subject_id')
@@ -103,6 +106,7 @@ class NPDMarkCreateView(CreateView):
         npd_id = self.request.POST.get('npd_id', None)
         if npd_id:
             form.instance.mark = NPD.objects.filter(id=npd_id).first()
+            form.instance.who_rated = self.request.user
             return super(NPDMarkCreateView, self).form_valid(form)
         else:
             raise ValueError('No npd_id')
