@@ -15,7 +15,7 @@ class TeacherMarkListView(ListView):
     model = TeacherMark
 
 
-class TeacherMarkCreateView(CreateView, TeacherAccessMixin):
+class TeacherMarkCreateView(CreateView):
     model = TeacherMark
     template_name_suffix = "_create_form"
     success_url = reverse_lazy("home")
@@ -42,7 +42,7 @@ class StudentMarkListView(ListView):
     model = StudentMark
 
 
-class StudentMarkCreateView(CreateView, StudentAccessMixin):
+class StudentMarkCreateView(CreateView):
     model = StudentMark
     template_name_suffix = "_create_form"
     success_url = reverse_lazy("home")
