@@ -46,15 +46,8 @@ class Group(models.Model):
 class Student(models.Model):
     year_start = models.IntegerField(verbose_name=u'Год поступления', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
     year_end = models.IntegerField(verbose_name=u'Год окончания', validators=[MaxValueValidator(3000), MinValueValidator(1970)])
-    user_group_full_name = models.ForeignKey(Group)
-    user_connection = models.OneToOneField(User)
-
-    def __unicode__(self):
-        return u'{} {}'.format(self.user_connection.first_name, self.user_connection.last_name)
-
-
-class Teacher(models.Model):
-    user_connection = models.OneToOneField(User)
+    user_group_full_name = models.ForeignKey(verbose_name=u'Группа студента', to=Group)
+    user_connection = models.OneToOneField(verbose_name=u'Пользователь', to=User)
 
     def __unicode__(self):
         return u'{} {}'.format(self.user_connection.first_name, self.user_connection.last_name)
@@ -62,9 +55,16 @@ class Teacher(models.Model):
 
 class Subject(models.Model):
     name = models.CharField(verbose_name=u'Предмет', max_length=50)
-    semester = models.CharField(verbose_name=u'Семестр обучения', choices=SEMESTER_CHOICES, default='1', max_length=5)
-    course = models.CharField(verbose_name=u'Курс', choices=COURSE_CHOICE, default='1', max_length=5)
+    subject_group = models.ManyToManyField(verbose_name=u'Группы', to=Group)
     subject_type = models.ForeignKey(verbose_name=u'Тип предмета', to=ClassesType)
 
     def __unicode__(self):
         return u'{} - {}{} - {}'.format(self.name, self.course, self.semester, self.subject_type)
+
+
+class Teacher(models.Model):
+    all_subjects = models.ManyToManyField(verbose_name=u'Предметы', to=Subject)
+    user_connection = models.OneToOneField(User)
+
+    def __unicode__(self):
+        return u'{} {}'.format(self.user_connection.first_name, self.user_connection.last_name)

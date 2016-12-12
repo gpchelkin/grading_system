@@ -10,7 +10,6 @@ class StudentAccessMixin(View):
         if not student:
             raise PermissionDenied
         else:
-            self.student = student
             return super(StudentAccessMixin, self).dispatch(request, *args, **kwargs)
 
 
@@ -20,5 +19,4 @@ class TeacherAccessMixin(View):
         if not teacher:
             raise PermissionDenied
         else:
-            self.teacher = teacher
             return super(TeacherAccessMixin, self).dispatch(request, *args, **kwargs)

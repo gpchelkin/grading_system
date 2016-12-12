@@ -1,6 +1,8 @@
 # coding=utf-8
 from django.db import models
 
+from core.models import Student
+
 NPD_CHOICE = (
     (u'Научно-исследовательская работа', u'Научно-исследовательская работа'),
     (u'Педагогическая практика', u'Педагогическая практика'),
@@ -14,6 +16,7 @@ NPD_CHOICE = (
 
 class NPD(models.Model):
     name = models.CharField(verbose_name=u'Научно-практическая деятельность', choices=NPD_CHOICE, max_length=50)
+    who = models.ForeignKey(verbose_name=u'Кто оценивает', to=Student)
 
     def __unicode__(self):
         return u'{}'.format(self.name)
