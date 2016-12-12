@@ -59,7 +59,7 @@ class Subject(models.Model):
     subject_type = models.ForeignKey(verbose_name=u'Тип предмета', to=ClassesType)
 
     def __unicode__(self):
-        return u'{} - {}{} - {}'.format(self.name, self.course, self.semester, self.subject_type)
+        return u'{} - {}'.format(self.name, self.subject_type)
 
 
 class Teacher(models.Model):
