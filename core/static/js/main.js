@@ -10,56 +10,35 @@ $(".blocks").on("click", function () {
 
 $('.js_form_submit').on('submit', function (e){
     e.preventDefault();
-    var newThis = $(this);
-    swal({
-        title: "Оценка поставлена",
-        text: "Оценка успешно поставлена",
-        type: "success"
-    }, function () {
-      newThis[0].submit()
+
+    //Валидация
+    var isLetters = false;
+    var isNotInRange = false;
+    arrayOfMarks = $('.js_form_submit').find('input[type=number]');
+    arrayOfMarks.each(function(){ if (isNaN($(this).val())) isLetters=true;
+    else if (($(this).val() > 10 || $(this).val() < 1)) isNotInRange=true;
     });
+    if (isLetters || isNotInRange){
+        swal({
+            title: "Оценка не поставлена",
+            text: "Проверьте правильность ввода!",
+            type: "error"
+            })
+    }
+
+    else{
+        var newThis = $(this);
+        swal({
+            title: "Оценка поставлена",
+            text: "Оценка успешно поставлена",
+            type: "success"
+            },
+            function () {newThis[0].submit()});
+    }
+
 });
 
-//$( "#marks__form" ).validate({
-//  rules: {
-//    orator: {
-//      required: true,
-//        min: {
-//            param: 0
-//        },
-//        max: {
-//          param: 10
-//        },
-//        errorPlacement: function (error, element) {
-//            element.attr("placeholder", error.text());
-//        },
-//        submitHandler: function (form) { // for demo
-//            alert('valid form submitted'); // for demo
-//            return false; // for demo
-//        }
-//    }
-//  }
-//});
-//
-//$
 
-
-//$('.marks__form').validate({ // initialize the plugin
-//        rules: {
-//            data_input: {
-//                required: true,
-//                    min:{
-//                        param:0
-//                    },
-//                    max:{
-//                        param:10
-//                    }
-//            }
-//        },
-//        errorPlacement: function (error, element) {
-//            element.attr("placeholder", error.text());
-//        }
-//    });
 
 $('.marks__form').submit(function(){
   // location.href = 'teachers_rating_chart.html';
