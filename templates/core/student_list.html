@@ -4,6 +4,12 @@
     Список студентов
 {% endblock %}
 
+{% block breadcumps %}
+        <li><a href="{% url "home" %}">Главная</a></li>
+        <li><a href="{% url "core:all_groups" %}">Список групп</a></li>
+        <li class="active">Список студентов</li>
+{% endblock %}
+
 {% block content %}
 
     <div class="row">

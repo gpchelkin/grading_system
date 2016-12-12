@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% block title %}
+    Научно-практическая деятельность
+{% endblock %}
+
+{% block breadcumps %}
+        <li><a href="{% url "home" %}">Главная</a></li>
+        <li class="active">Научно-практическая деятельность</li>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4 ">

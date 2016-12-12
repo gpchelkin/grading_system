@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    Список групп
+{% endblock %}
+
+{% block breadcumps %}
+        <li><a href="{% url "home" %}">Главная</a></li>
+        <li class="active">Список групп</li>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4 ">

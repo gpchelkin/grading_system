@@ -30,6 +30,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> {{ user.first_name }} {{ user.last_name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li class="dropdown-header">
+                            {% if user.is_teacher %}
+                                Преподаватель
+                            {% elif user.is_student %}
+                                Студент
+                            {% elif user.is_superuser %}
+                                Администратор
+                            {% endif %}
+                        </li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="{% url 'profile_info:all' %}">Профиль</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{% url "logout" %}">Выйти</a></li>
@@ -44,6 +54,11 @@
 </nav>
 <div class="body">
     <div class="container">
+        <ol class="breadcrumb">
+            {% block breadcumps %}
+
+            {% endblock %}
+        </ol>
         {% block content %}
         {% endblock %}
     </div>

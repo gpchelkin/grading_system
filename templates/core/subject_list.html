@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{% block title %}
+    Список предметов
+{% endblock %}
+
+{% block breadcumps %}
+        <li><a href="{% url "home" %}">Главная</a></li>
+        <li><a href="{% url "curriculum:all_classes_types" %}">Учебный план</a></li>
+        <li class="active">Список предметов</li>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4 ">
