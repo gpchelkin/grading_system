@@ -4,6 +4,12 @@
     Оценки, поставленные мной
 {% endblock %}
 
+{% block breadcumps %}
+    <li><a href="{% url "home" %}">Главная</a></li>
+    <li><a href="{% url "profile_info:all" %}">Главная</a></li>
+    <li class="active">Оценки, поставленные мной</li>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-sm-12 body__right">
@@ -15,7 +21,7 @@
                             <div>
                                 <div class="show__marks">
                                     <a href="#">
-                                        {{ student_marks }}
+                                        {{ student_mark }}
                                     </a>
                                 </div>
                             </div>

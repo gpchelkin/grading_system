@@ -4,6 +4,12 @@
     Оценки, поставленные мне
 {% endblock %}
 
+{% block breadcumps %}
+    <li><a href="{% url "home" %}">Главная</a></li>
+    <li><a href="{% url "profile_info:all" %}">Главная</a></li>
+    <li class="active">Оценки, поставленные мне</li>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-sm-12 body__right">
