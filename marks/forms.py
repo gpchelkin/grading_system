@@ -4,7 +4,7 @@ from django.forms import TextInput
 from marks.models import StudentMark, TeacherMark, SubjectMark, NPDMark
 from npd.models import NPD
 
-EXCLUDE_FIELDS = ['who_rated', 'date', 'mark']
+EXCLUDE_FIELDS = ['who_rated', 'date', 'mark', 'type_rated']
 
 
 class CreateTeacherMarkForm(forms.ModelForm):

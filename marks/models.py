@@ -53,7 +53,8 @@ class SubjectMark(Mark):
     fixation_material_points = models.IntegerField(verbose_name=u'Закрепление материала', validators=[MaxValueValidator(10), MinValueValidator(1)])
     learning_material_points = models.IntegerField(verbose_name=u'Методические материалы', validators=[MaxValueValidator(10), MinValueValidator(1)])
     learning_organization_points = models.IntegerField(verbose_name=u'Организация занятий', validators=[MaxValueValidator(10), MinValueValidator(1)])
-    mark = models.ForeignKey(verbose_name=u'Оценивший', to=Subject)
+    mark = models.ForeignKey(verbose_name=u'Оценивший', to=User)
+    what_subject = models.ForeignKey(verbose_name=u'Предмет', to=Subject)
 
     def __unicode__(self):
         return u'Предмет: {} Оценки: {}-{}-{}-{}-{}-{} '.format(

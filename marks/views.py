@@ -94,7 +94,8 @@ class SubjectMarkCreateView(CreateView):
     def form_valid(self, form):
         subject_id = self.request.POST.get('subject_id', None)
         if subject_id:
-            form.instance.mark = Subject.objects.filter(id=subject_id).first()
+            form.instance.what_subject = Subject.objects.filter(id=subject_id).first()
+            form.instance.mark = self.request.user
 
             if self.request.user.is_teacher:
                 res = 't'
