@@ -16,7 +16,6 @@ NPD_CHOICE = (
 
 class NPD(models.Model):
     name = models.CharField(verbose_name=u'Научно-практическая деятельность', choices=NPD_CHOICE, max_length=50)
-    who = models.ForeignKey(verbose_name=u'Кто оценивает', to=Student)
 
     def __unicode__(self):
         return u'{}'.format(self.name)
