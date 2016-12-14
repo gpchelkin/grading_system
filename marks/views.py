@@ -130,7 +130,8 @@ class NPDMarkCreateView(CreateView):
     def form_valid(self, form):
         npd_id = self.request.POST.get('npd_id', None)
         if npd_id:
-            form.instance.mark = NPD.objects.filter(id=npd_id).first()
+            form.instance.what_npd = NPD.objects.filter(id=npd_id).first()
+            form.instance.mark = self.request.user
 
             if self.request.user.is_teacher:
                 res = 't'

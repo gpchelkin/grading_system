@@ -65,7 +65,8 @@ class SubjectMark(Mark):
 
 class NPDMark(Mark):
     difficult_points = models.IntegerField(verbose_name=u'Уровень сложности', validators=[MaxValueValidator(10), MinValueValidator(1)])
-    mark = models.ForeignKey(verbose_name=u'НПД', to=NPD)
+    mark = models.ForeignKey(verbose_name=u'Кто оценил', to=User)
+    what_npd = models.ForeignKey(verbose_name=u'НПД', to=NPD)
 
     def __unicode__(self):
-        return u'НПД: {} Оценка: {}'.format(self.mark.name, self.difficult_points)
+        return u'НПД: {} Оценка: {}'.format(self.what_npd.name, self.difficult_points)
