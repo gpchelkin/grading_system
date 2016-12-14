@@ -58,7 +58,7 @@ class SubjectMark(Mark):
 
     def __unicode__(self):
         return u'Предмет: {} Оценки: {}-{}-{}-{}-{}-{} '.format(
-            self.mark.name, self.relevance_points, self.availability_points, self.thrill_points,
+            self.what_subject.name, self.relevance_points, self.availability_points, self.thrill_points,
             self.fixation_material_points, self.learning_material_points, self.learning_organization_points
         )
 
