@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from marks.models import TeacherMark, StudentMark, SubjectMark, NPDMark
+from marks.models import Scale, Krit, Mark
 
-admin.site.register(TeacherMark)
-admin.site.register(StudentMark)
-admin.site.register(SubjectMark)
-admin.site.register(NPDMark)
+admin.site.register(Scale)
+admin.site.register(Krit)
+admin.site.register(Mark)

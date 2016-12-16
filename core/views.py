@@ -7,7 +7,7 @@ from django.views.generic import UpdateView
 from core.forms import CreateStudentForm, UpdateStudentForm, CreateTeacherForm, UpdateTeacherForm, UpdateSubjectForm, \
     CreateSubjectForm
 from core.models import Teacher, Student, User, Group, Subject
-from marks.forms import CreateStudentMarkForm, CreateTeacherMarkForm, CreateSubjectMarkForm
+# from marks.forms import CreateStudentMarkForm, CreateTeacherMarkForm, CreateSubjectMarkForm
 
 
 class MainPageTemplateView(TemplateView):
