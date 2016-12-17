@@ -14,7 +14,7 @@ $('.js_form_submit').on('submit', function (e){
     //Валидация
     var isLetters = false;
     var isNotInRange = false;
-    arrayOfMarks = $('.js_form_submit').find('input[type=number]');
+    arrayOfMarks = $(this).find('input[type=number]');
     arrayOfMarks.each(function(){ if (isNaN($(this).val())) isLetters=true;
     else if (($(this).val() > 10 || $(this).val() < 1)) isNotInRange=true;
     });
