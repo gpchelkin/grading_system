@@ -14,9 +14,9 @@ class ProfileMyMarksTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProfileMyMarksTemplateView, self).get_context_data(**kwargs)
-        teachers_marks = TeacherMark.objects.filter(mark__user_connection=self.request.user)
-        student_marks = StudentMark.objects.filter(mark__user_connection=self.request.user)
-        subject_marks = SubjectMark.objects.filter(mark=self.request.user)
+        teachers_marks = TeacherMark.objects.filter(who_rated=self.request.user)
+        student_marks = StudentMark.objects.filter(who_rated=self.request.user)
+        subject_marks = SubjectMark.objects.filter(who_rated=self.request.user)
         context.update({
             'teachers_marks': teachers_marks,
             'student_marks': student_marks,

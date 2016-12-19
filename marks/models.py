@@ -16,6 +16,7 @@ RATED_TYPE = (
 
 class Mark(models.Model):
     date = models.DateTimeField(verbose_name=u'Дата оценивания', default=datetime.datetime.now)
+    who_rated = models.OneToOneField(verbose_name=u'Кто оценил', to=User)
     type_rated = models.CharField(verbose_name=u'Тип оценившего', default='s', max_length=2, choices=RATED_TYPE)
 
 
@@ -26,7 +27,7 @@ class TeacherMark(Mark):
     understanding_points = models.IntegerField(verbose_name=u'Взаимопонимание', validators=[MaxValueValidator(10), MinValueValidator(1)])
     charisma_points = models.IntegerField(verbose_name=u'Харизматичность', validators=[MaxValueValidator(10), MinValueValidator(1)])
     collective_points = models.IntegerField(verbose_name=u'Атмосфера коллектива', validators=[MaxValueValidator(10), MinValueValidator(1)])
-    mark = models.ForeignKey(verbose_name=u'Оценивший', to=Teacher)
+    mark = models.ForeignKey(verbose_name=u'Какой преподаватель', to=Teacher)
 
     def __unicode__(self):
         return u'Преподаватель: {} Оценки: {}-{}-{}-{}-{}-{}'.format(
@@ -40,7 +41,7 @@ class StudentMark(Mark):
     mutual_points = models.IntegerField(verbose_name=u'Взаимовыручка', validators=[MaxValueValidator(10), MinValueValidator(1)])
     speak_points = models.IntegerField(verbose_name=u'Общительность', validators=[MaxValueValidator(10), MinValueValidator(1)])
     learning_attitudes_points = models.IntegerField(verbose_name=u'Отношение к учебе', validators=[MaxValueValidator(10), MinValueValidator(1)])
-    mark = models.ForeignKey(verbose_name=u'Оценивший', to=Student)
+    mark = models.ForeignKey(verbose_name=u'Какой студент', to=Student)
 
     def __unicode__(self):
         return u'Студент: {} Оценки: {}-{}-{}-{}'.format(self.mark, self.teamwork_points, self.mutual_points, self.speak_points, self. learning_attitudes_points)
@@ -53,8 +54,7 @@ class SubjectMark(Mark):
     fixation_material_points = models.IntegerField(verbose_name=u'Закрепление материала', validators=[MaxValueValidator(10), MinValueValidator(1)])
     learning_material_points = models.IntegerField(verbose_name=u'Методические материалы', validators=[MaxValueValidator(10), MinValueValidator(1)])
     learning_organization_points = models.IntegerField(verbose_name=u'Организация занятий', validators=[MaxValueValidator(10), MinValueValidator(1)])
-    mark = models.ForeignKey(verbose_name=u'Оценивший', to=User)
-    what_subject = models.ForeignKey(verbose_name=u'Предмет', to=Subject)
+    what_subject = models.ForeignKey(verbose_name=u'Какой предмет', to=Subject)
 
     def __unicode__(self):
         return u'Предмет: {} Оценки: {}-{}-{}-{}-{}-{} '.format(
@@ -65,7 +65,6 @@ class SubjectMark(Mark):
 
 class NPDMark(Mark):
     difficult_points = models.IntegerField(verbose_name=u'Уровень сложности', validators=[MaxValueValidator(10), MinValueValidator(1)])
-    mark = models.ForeignKey(verbose_name=u'Кто оценил', to=User)
     what_npd = models.ForeignKey(verbose_name=u'НПД', to=NPD)
 
     def __unicode__(self):
