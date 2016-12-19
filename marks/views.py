@@ -25,6 +25,7 @@ class TeacherMarkCreateView(CreateView):
         teacher_id = self.request.POST.get('teacher_id', None)
         if teacher_id:
             form.instance.mark = Teacher.objects.filter(id=teacher_id).first()
+            form.instance.who_rated = self.request.user
 
             if self.request.user.is_teacher:
                 res = 't'
@@ -60,6 +61,7 @@ class StudentMarkCreateView(CreateView):
         student_id = self.request.POST.get('student_id', None)
         if student_id:
             form.instance.mark = Student.objects.filter(id=student_id).first()
+            form.instance.who_rated = self.request.user
 
             if self.request.user.is_teacher:
                 res = 't'
@@ -95,6 +97,7 @@ class SubjectMarkCreateView(CreateView):
         subject_id = self.request.POST.get('subject_id', None)
         if subject_id:
             form.instance.what_subject = Subject.objects.filter(id=subject_id).first()
+            form.instance.who_rated = self.request.user
             form.instance.mark = self.request.user
 
             if self.request.user.is_teacher:
@@ -131,7 +134,7 @@ class NPDMarkCreateView(CreateView):
         npd_id = self.request.POST.get('npd_id', None)
         if npd_id:
             form.instance.what_npd = NPD.objects.filter(id=npd_id).first()
-            form.instance.mark = self.request.user
+            form.instance.who_rated = self.request.user
 
             if self.request.user.is_teacher:
                 res = 't'
