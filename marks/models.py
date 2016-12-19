@@ -39,7 +39,7 @@ class Krit(models.Model):
 class Mark(models.Model):
     date = models.DateTimeField(verbose_name=u'Дата оценивания', default=datetime.datetime.now)
     type_rated = models.CharField(verbose_name=u'Тип оценившего', default='s', max_length=2, choices=RATED_TYPE)
-    user_rated = models.ForeignKey(User, null=True, related_name='user_that_rated')
+    user_rated = models.ForeignKey(verbose_name=u'Кто оценил', to=User, null=True, related_name='user_that_rated')
     type_marked = models.CharField(verbose_name=u'Тип оцениваемого', default='s', max_length=2, choices=RATED_TYPE)
     user_marked = models.ForeignKey(verbose_name=u'Кого оцениваем', to=User, related_name='user_whom_marked', null=True, blank=True)
     subject_marked = models.ForeignKey(verbose_name=u'Оцениваемый предмет', to=Subject, null=True, blank=True)
