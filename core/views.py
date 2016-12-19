@@ -27,8 +27,8 @@ class TeacherListView(ListView):
 
     def get_context_data(self, **kwargs):
         data = super(TeacherListView, self).get_context_data()
-        form = CreateTeacherMarkForm()
-        data.update({'form': form})
+        # form = CreateTeacherMarkForm()
+        # data.update({'form': form})
         return data
 
 
@@ -56,8 +56,8 @@ class StudentListView(ListView):
 
     def get_context_data(self, **kwargs):
         data = super(StudentListView, self).get_context_data()
-        form = CreateStudentMarkForm()
-        data.update({'form': form})
+        # form = CreateStudentMarkForm()
+        # data.update({'form': form})
         return data
 
 
@@ -85,8 +85,8 @@ class SubjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         data = super(SubjectListView, self).get_context_data()
-        form = CreateSubjectMarkForm()
-        data.update({'form': form})
+        # form = CreateSubjectMarkForm()
+        # data.update({'form': form})
         return data
 
 
