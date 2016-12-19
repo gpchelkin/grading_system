@@ -22,6 +22,10 @@ class Scale(models.Model):
     max_value = models.IntegerField(verbose_name=u'Максимальное значение', default=10)
     min_value = models.IntegerField(verbose_name=u'Минимальное значение', default=1)
 
+    class Meta:
+        verbose_name = u'Шкала'
+        verbose_name_plural = u'Шкалы'
+
     def __unicode__(self):
         return u'{}'.format(self.name)
 
@@ -31,6 +35,10 @@ class Krit(models.Model):
     name = models.TextField(verbose_name=u'Наименование критерия', default='Default name')
     scale = models.ForeignKey(verbose_name=u'Шкала', to=Scale)
     type = models.CharField(verbose_name=u'Оцениваемая сущность', default='p', max_length=2, choices=RATED_TYPE)
+
+    class Meta:
+        verbose_name = u'Критерий'
+        verbose_name_plural = u'Критерии'
 
     def __unicode__(self):
         return u'Критерий {}'.format(self.name)
@@ -45,6 +53,10 @@ class Mark(models.Model):
     subject_marked = models.ForeignKey(verbose_name=u'Оцениваемый предмет', to=Subject, null=True, blank=True)
     mark_value = models.IntegerField(verbose_name=u'Оценка', default='1')
     criterion = models.ForeignKey(verbose_name=u'Критерий', to=Krit, null=True)
+
+    class Meta:
+        verbose_name = u'Оценка'
+        verbose_name_plural = u'Оценки'
 
     def __unicode__(self):
         return u'Оценка типа {}, оценил {}'.format(self.type_rated, self.type_marked)

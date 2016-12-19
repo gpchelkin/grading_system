@@ -17,5 +17,9 @@ NPD_CHOICE = (
 class NPD(models.Model):
     name = models.CharField(verbose_name=u'Научно-практическая деятельность', choices=NPD_CHOICE, max_length=50)
 
+    class Meta:
+        verbose_name = u'Научно-практическая деятельность'
+        verbose_name_plural = u'Научно-практические деятельности'
+
     def __unicode__(self):
         return u'{}'.format(self.name)

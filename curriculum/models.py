@@ -14,7 +14,11 @@ TYPE_CHOICES = (
 
 
 class ClassesType(models.Model):
-    classes_type = models.CharField(verbose_name="Тип занятий", choices=TYPE_CHOICES, max_length=40)
+    classes_type = models.CharField(verbose_name=u"Тип занятий", choices=TYPE_CHOICES, max_length=40)
+
+    class Meta:
+        verbose_name = u'Тип занятия'
+        verbose_name_plural = u'Типы занятий'
 
     def __unicode__(self):
         return u'{}'.format(self.classes_type)

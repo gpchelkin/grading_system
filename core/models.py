@@ -32,12 +32,22 @@ COURSE_CHOICE = (
 
 
 class User(AbstractUser):
+    first_name = models.CharField(verbose_name=u'Имя', blank=False, max_length=30)
+    last_name = models.CharField(verbose_name=u'Фамилия', blank=False, max_length=30)
     is_student = models.BooleanField("Этот пользователь студент", default=False)
     is_teacher = models.BooleanField("Этот пользователь учитель", default=False)
+
+    class Meta:
+        verbose_name = u'Пользователь'
+        verbose_name_plural = u'Пользователи'
 
 
 class Group(models.Model):
     name = models.CharField(verbose_name=u'Группа', max_length=10)
+
+    class Meta:
+        verbose_name = u'Группа'
+        verbose_name_plural = u'Группы'
 
     def __unicode__(self):
         return u'{}'.format(self.name)
@@ -49,6 +59,10 @@ class Student(models.Model):
     user_group_full_name = models.ForeignKey(verbose_name=u'Группа студента', to=Group)
     user_connection = models.OneToOneField(verbose_name=u'Пользователь', to=User)
 
+    class Meta:
+        verbose_name = u'Студент'
+        verbose_name_plural = u'Студенты'
+
     def __unicode__(self):
         return u'{} {}'.format(self.user_connection.first_name, self.user_connection.last_name)
 
@@ -58,6 +72,10 @@ class Subject(models.Model):
     subject_group = models.ManyToManyField(verbose_name=u'Группы', to=Group)
     subject_type = models.ForeignKey(verbose_name=u'Тип предмета', to=ClassesType)
 
+    class Meta:
+        verbose_name = u'Предмет'
+        verbose_name_plural = u'Предметы'
+
     def __unicode__(self):
         return u'{} - {}'.format(self.name, self.subject_type)
 
@@ -65,6 +83,10 @@ class Subject(models.Model):
 class Teacher(models.Model):
     all_subjects = models.ManyToManyField(verbose_name=u'Предметы', to=Subject)
     user_connection = models.OneToOneField(User)
+
+    class Meta:
+        verbose_name = u'Преподаватель'
+        verbose_name_plural = u'Преподаватели'
 
     def __unicode__(self):
         return u'{} {}'.format(self.user_connection.first_name, self.user_connection.last_name)
