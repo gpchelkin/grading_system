@@ -20,7 +20,7 @@ $('.js_form_submit').on('submit', function (e){
     });
     if (isLetters || isNotInRange){
         swal({
-            title: "Оценка не поставлена",
+            title: "Оценки не поставлены",
             text: "Проверьте правильность ввода!",
             type: "error"
             })
@@ -29,8 +29,8 @@ $('.js_form_submit').on('submit', function (e){
     else{
         var newThis = $(this);
         swal({
-            title: "Оценка поставлена",
-            text: "Оценка успешно поставлена",
+            title: "Оценки поставлены",
+            text: "Оценки занесены в базу данных",
             type: "success"
             },
             function () {newThis[0].submit()});
